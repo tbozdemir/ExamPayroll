@@ -12,17 +12,17 @@ package payroll;
 public class Payroll 
 {
 
-   private double Salary;
-   private double bonus;
-   private String emp;
+   private double _Salary;
+   private double _bonus;
+   private String _emp;
  
      /**constructor that takes the salary and employee name
       * 
       */
    public Payroll(double Sal,String givenUser)
         {
-            Salary=Sal;
-            emp=givenUser;
+       setSalary(Sal);
+       setEmp(givenUser);
                  
         }
          /**The method for calculating salary including bonus.Bonus is 10% of salary 
@@ -32,24 +32,37 @@ public class Payroll
      /**The getter for the Salary
      * @return the Salary
      */
+   public void setSalary(double Sal){
+       _Salary=Sal;
+   }
+   public void setEmp(String givenUser){
+       _emp=givenUser;
+   }
         public double getSalary() 
         {
-        return Salary;
+            if(_Salary<=3000){
+              
+                _Salary=_Salary+getBonus();
+                return _Salary;
+            }
+        return _Salary;
         }
 
     /*The getter for bonus
      * @return the bonus*/
-     
-        public double getBonus() 
+        
+        public double getBonus()        
         {
-            return bonus;
+      
+            _bonus=(_Salary*10/100);
+            return _bonus;
         }
 
     /**user is the read only field
      * @return the user
      */
     public String getEmp() {
-        return emp;
+        return _emp;
     }
     
     
